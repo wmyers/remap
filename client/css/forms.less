@@ -1,0 +1,79 @@
+.form-style {
+    box-sizing: border-box;
+    background: slategray;
+    padding: 12px;
+    font: 18px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #D3D3D3;
+}
+.form-style label {
+    display: block;
+}
+
+.form-style input[type="text"],
+.form-style input[type="email"],
+.form-style input[type="password"],
+.form-style textarea,
+.form-style select {
+    border: none;
+    color: #525252;
+    height: 35px;
+    line-height:35px;
+    font: 0.9em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-indent: 10px;
+    margin: 6px 0 10px 0;
+    padding: 0;
+    width: 100%;
+    border-radius: 2px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    background: #DFDFDF;
+}
+
+.form-style select {
+    background: #DFDFDF url('/img/down-arrow.png') no-repeat right;
+    // override any appearance
+    appearance:none;
+    -webkit-appearance:none;
+    -moz-appearance: none;
+    text-overflow: ellipsis;
+}
+
+.form-style textarea{
+    height:100px;
+}
+
+.form-style button, .form-style-button {
+    display: inline;
+    margin: 10px 10px 0 0;
+    background: gainsboro;
+    border: none;
+    padding: 10px 25px;
+    color: teal;
+    font: 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    // text-shadow: 1px 1px 2px #bbb;
+    box-shadow: 1px 1px 1px #3D3D3D;
+    -webkit-box-shadow:1px 1px 1px #3D3D3D;
+    -moz-box-shadow:1px 1px 1px #3D3D3D;
+}
+
+.form-style button:hover {
+    color: #333;
+    background-color: #EBEBEB;
+}
+
+.form-style hr {
+  margin:2px 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid #DFDFDF;
+}
+
+// smaller component fonts
+@media all and (max-width: 720px) {
+  .form-style {
+    font-size: 16px;
+  }
+}

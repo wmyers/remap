@@ -1,0 +1,125 @@
+html, body {
+	margin:0;
+	height: 100%;
+}
+
+//the react app div
+#app {
+	height: 100%;
+}
+
+//jsx container div
+#app > div:first-child {
+	height: 100%;
+}
+
+//flex column layout for the page
+//and then flex sub-layouts all the way down
+.page{
+	background: gainsboro;
+	display: flex;
+	flex-flow: column;
+	height: 100%;
+	width:100%;
+}
+
+header {
+	color: #c0c0c0;
+	font-family: "Helvetica";
+	font-size: 2.5em;
+	flex: 0 80px;
+	background: url("/img/globe_icon.png") darkslategray no-repeat ;
+	background-position: 5px 0;
+	background-size: 80px;
+	padding-left: 90px;
+	line-height: 80px;
+}
+
+//the react wrapper for main
+//make this take up all the vertical space after the header
+.page > div:nth-child(2):not(.form-style){
+	display:flex;
+	flex: 1;
+}
+
+// contains the map and the map form ui
+main {
+	display: flex;
+	flex: 1;
+}
+
+// map
+.map-container{
+	display: flex;
+	flex: 3 75%;
+	min-height: 400px; //without this the ui-container fills up more space, ignoring flex LEFTOVER space definitions
+}
+
+.map{
+	width: 100%;
+	height: auto;
+}
+
+//ui
+
+.ui-container{
+	display: flex;
+	flex: 1 25%;
+	flex-flow: row wrap;
+	align-content: flex-start;
+	background: slategray;
+}
+
+.ui-container .form-style{
+	flex: 1 100%;
+}
+
+.login-form, .signup-form {
+	width: 50%;
+	margin: auto;
+}
+
+/* Switch to column view */
+@media all and (max-width: 720px) {
+	 // column view
+   main {
+		 flex-flow: column;
+   }
+
+	 //horizontal ui forms
+	 .ui-container .form-style{
+	 		flex: 1 50%;
+		}
+
+	 //small header
+	 header {
+	 	font-size: 1.5em;
+	 	flex: 0 40px;
+	 	background-size: 40px;
+	 	padding-left: 50px;
+	 	line-height: 40px;
+	 }
+}
+
+//loading spinner
+.loading-spinner,
+.loading-spinner-indicator {
+	border: 10px solid rgba(0, 0, 0, 0.5);
+}
+.loading-spinner-indicator {
+	border-color: transparent;
+	border-top-color: white;
+}
+
+//clearfix
+.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  zoom: 1; /* ie 6/7 */
+}

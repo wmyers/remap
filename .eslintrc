@@ -1,0 +1,15 @@
+{
+  "ecmaFeatures": {
+    "modules": true,
+    "jsx": true
+  },
+  "parser": "babel-eslint",
+  "environment": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "plugins": [
+    "eslint-plugin-html"
+  ]
+}
