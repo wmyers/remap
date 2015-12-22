@@ -1,5 +1,5 @@
 {
-  "name": "sloc",
+  "name": "remap",
   "version": "0.0.1",
   "description": "A starter app for React, Flux and Google Maps",
   "main": "src/js/index.jsx",

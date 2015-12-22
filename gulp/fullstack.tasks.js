@@ -177,8 +177,14 @@ module.exports = function(gulp) {
   };
 
   var babelifyTransform = babelify.configure({
-    plugins: [require('babel-plugin-object-assign')],
-    optional: 'es7.objectRestSpread'
+    plugins: [
+      require('babel-plugin-object-assign')
+    ],
+    optional: 'es7.objectRestSpread',
+
+    // externalHelpers are tasked from node_modules into client/js below
+    // and injected with a <script> tag in the html - not pretty, but it works
+    externalHelpers: true
   });
 
   // Build
@@ -188,6 +194,8 @@ module.exports = function(gulp) {
   gulp.task('static-data', plumb.bind(null, 'client/data/static/**', [], 'dist/public/data'));
   gulp.task('less', lessTasks.bind(null, false));
   gulp.task('less-prod', lessTasks.bind(null, true));
+  // for Babel version 5
+  gulp.task('babel-external-helpers', plumb.bind(null, 'node_modules/babel-core/external-helpers.min.js', [], './dist/public/js'));
   gulp.task('scripts', buildApp.bind(null, ['./client/js/' + client_entrypoint], [babelifyTransform, reactify, brfs], './dist/public/js'));
   gulp.task('scripts-watch', buildApp.bind(null, ['./client/js/' + client_entrypoint], [babelifyTransform, reactify, brfs], './dist/public/js', true));
   gulp.task('server-prod', plumb.bind(null, ['server/**'], [], 'dist/server'));
@@ -203,8 +211,8 @@ module.exports = function(gulp) {
   gulp.task('clean', function() {
     return del(['./dist/*']);
   });
-  gulp.task('build-assets', ['html', 'images', 'fonts', 'static-data', 'less']);
-  gulp.task('build-assets-prod', ['html', 'images', 'fonts', 'static-data', 'less-prod']);
+  gulp.task('build-assets', ['html', 'images', 'fonts', 'static-data', 'less', 'babel-external-helpers']);
+  gulp.task('build-assets-prod', ['html', 'images', 'fonts', 'static-data', 'less-prod', 'babel-external-helpers']);
   gulp.task('build', ['build-assets', 'scripts']);
   gulp.task('build-prod', ['build-assets-prod', 'scripts', 'server-prod', 'server-prod-json', 'server-prod-shrinkwrap']);
   gulp.task('watch', ['build-assets', 'scripts-watch'], function() {
